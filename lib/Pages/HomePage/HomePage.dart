@@ -137,16 +137,24 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.only(
                         left: 6 * Responsive.imageSizeMultiplier),
-                    child: _mediaStack(
-                      "assets/image.png",
-                      Colors.green[100],
-                      "Gishushu",
-                      "682 items",
-                      "Private Folder",
-                      Colors.indigo,
-                      Icon(
-                        Icons.lock_outline,
-                        color: Colors.green[500],
+                    child: GestureDetector(
+                      onTap: (){
+                         Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => StoreDetails()),
+                      );
+                      },
+                                          child: _mediaStack(
+                        "assets/image.png",
+                        Colors.green[100],
+                        "Gishushu",
+                        "682 items",
+                        "Private Folder",
+                        Colors.indigo,
+                        Icon(
+                          Icons.lock_outline,
+                          color: Colors.green[500],
+                        ),
                       ),
                     ),
                   ),
@@ -156,16 +164,24 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: EdgeInsets.only(
                         left: 6 * Responsive.imageSizeMultiplier),
-                    child: _mediaStack(
-                      "assets/image.png",
-                      Colors.green[100],
-                      "Musanze",
-                      "682 items",
-                      "Private Folder",
-                      Colors.green[200],
-                      Icon(
-                        Icons.lock_outline,
-                        color: Colors.green[500],
+                    child: GestureDetector(
+                      onTap: (){
+                         Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => StoreDetails()),
+                      );
+                      },
+                                          child: _mediaStack(
+                        "assets/image.png",
+                        Colors.green[100],
+                        "Musanze",
+                        "682 items",
+                        "Private Folder",
+                        Colors.green[200],
+                        Icon(
+                          Icons.lock_outline,
+                          color: Colors.green[500],
+                        ),
                       ),
                     ),
                   ),
