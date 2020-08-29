@@ -1,43 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:phone_stock_mgt/sizeconfig.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:phone_stock_mgt/stockList.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+import 'package:phone_stock_mgt/Pages/constant/sizeconfig.dart';
+import 'package:phone_stock_mgt/Pages/store/stockList.dart';
+class StoreDetails extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-    return LayoutBuilder(builder: (context, constraints) {
-      return OrientationBuilder(builder: (context, orientation) {
-        Responsive().init(constraints, orientation);
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Files App',
-          home: MediaPage(),
-        );
-      });
-    });
-  }
+  _StoreDetailsState createState() => _StoreDetailsState();
 }
 
-class MediaPage extends StatefulWidget {
-  @override
-  _MediaPageState createState() => _MediaPageState();
-}
-
-class _MediaPageState extends State<MediaPage> {
-
-
+class _StoreDetailsState extends State<StoreDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //top appBar
       appBar: AppBar(
         backgroundColor: Color(0xFF2c2c3c),
         leading: Padding(
@@ -46,7 +20,7 @@ class _MediaPageState extends State<MediaPage> {
             left: 6 * Responsive.imageSizeMultiplier,
           ),
           child: GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.pop(context);
             },
             child: Icon(
@@ -91,12 +65,11 @@ class _MediaPageState extends State<MediaPage> {
           Container(
             height: 0.33 * MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
-              color: Color(0xFF2c2c3c),
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(30.0),
-                bottomLeft: Radius.circular(30.0),
-              )
-            ),
+                color: Color(0xFF2c2c3c),
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(30.0),
+                  bottomLeft: Radius.circular(30.0),
+                )),
             child: Column(
               children: <Widget>[
                 Padding(
@@ -111,10 +84,14 @@ class _MediaPageState extends State<MediaPage> {
                         padding: EdgeInsets.only(
                           right: 3 * Responsive.widthMultiplier,
                         ),
-                        child: Icon(Icons.location_on,size: 8.4 * Responsive.imageSizeMultiplier,color: Colors.amber,),
+                        child: Icon(
+                          Icons.location_on,
+                          size: 8.4 * Responsive.imageSizeMultiplier,
+                          color: Colors.amber,
+                        ),
                       ),
                       Padding(
-                        padding:  EdgeInsets.only(
+                        padding: EdgeInsets.only(
                           right: 0.2 * Responsive.widthMultiplier,
                         ),
                         child: Text(
@@ -125,7 +102,7 @@ class _MediaPageState extends State<MediaPage> {
                           ),
                         ),
                       ),
-                       Text(
+                      Text(
                         "(store)",
                         style: TextStyle(
                           fontSize: 3.4 * Responsive.textMultiplier,
@@ -134,29 +111,30 @@ class _MediaPageState extends State<MediaPage> {
                       ),
                       Spacer(),
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           //MainScreen
                           Navigator.push(
-                          context,
-                        MaterialPageRoute(builder: (context) => MainScreen()),
-                      );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MainScreen()),
+                          );
                         },
-                                              child: Container(
+                        child: Container(
                           height: 5.4 * Responsive.heightMultiplier,
-                          width: 24.4 *Responsive.widthMultiplier,
+                          width: 24.4 * Responsive.widthMultiplier,
                           decoration: BoxDecoration(
                             color: Color(0xFF63cb99),
                             borderRadius: BorderRadius.circular(6.8),
                           ),
-                          child:  Center(
+                          child: Center(
                             child: Text(
-                'View Stock',
-                style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
-                  fontSize: 2.4 * Responsive.textMultiplier,
-                ),
-              ),
+                              'View Stock',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                                fontSize: 2.4 * Responsive.textMultiplier,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -192,59 +170,6 @@ class _MediaPageState extends State<MediaPage> {
                               color: Colors.white,
                             ),
                           ),
-                          // Container(
-                          //   width: 0.57 * MediaQuery.of(context).size.width,
-                          //   child: Column(
-                          //     children: <Widget>[
-                          //       Padding(
-                          //         padding: EdgeInsets.only(
-                          //           top: 1 * Responsive.heightMultiplier,
-                          //           left: 2 * Responsive.widthMultiplier,
-                          //         ),
-                          //         child: Row(
-                          //           children: <Widget>[
-                          //             Text(
-                          //               "Gb",
-                          //               style: TextStyle(
-                          //                 color: Colors.grey[600]
-                          //               ),
-                          //             ),
-                          //             Text(
-                          //               "223.1 Gb",
-                          //               style: TextStyle(
-                          //                   color: Colors.grey[600]
-                          //               ),
-                          //             ),
-                          //           ],
-                          //         ),
-                          //       ),
-                          //       Padding(
-                          //         padding: EdgeInsets.only(
-                          //           top: 0.5 * Responsive.heightMultiplier,
-                          //           left: 2 * Responsive.widthMultiplier,
-                          //         ),
-                          //         child: Row(
-                          //           children: <Widget>[
-                          //             Text(
-                          //               "Used",
-                          //               style: TextStyle(
-                          //                   color: Colors.grey[600]
-                          //               ),
-                          //             ),
-                          //             Spacer(),
-                          //             Text(
-                          //               "Free",
-                          //               style: TextStyle(
-                          //                   color: Colors.grey[600]
-                          //               ),
-                          //             ),
-                          //           ],
-                          //         ),
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
-               
                         ],
                       ),
                       Row(
@@ -263,10 +188,9 @@ class _MediaPageState extends State<MediaPage> {
                               color: Colors.white,
                             ),
                           ),
-                    
                         ],
                       ),
-                        Row(
+                      Row(
                         children: <Widget>[
                           Text(
                             "Total returns ",
@@ -282,11 +206,8 @@ class _MediaPageState extends State<MediaPage> {
                               color: Colors.white,
                             ),
                           ),
-                    
                         ],
                       ),
-                    
-                    
                     ],
                   ),
                 ),
@@ -327,7 +248,6 @@ class _MediaPageState extends State<MediaPage> {
                     fontSize: 3.4 * Responsive.textMultiplier,
                   ),
                 ),
-                
                 Spacer(),
                 Icon(
                   Icons.more_horiz,
@@ -344,22 +264,11 @@ class _MediaPageState extends State<MediaPage> {
                   Colors.amber[500],
                   Colors.amber[100],
                   "32Mb March 14, 2021",
-                  Icons.library_music
-              ),
-              _mediaListItem(
-                "Student Movies for March",
-                Colors.amber[500],
-                Colors.amber[100],
-                "894Mb March 8, 2021",
-                Icons.videocam
-              ),
-              _mediaListItem(
-                "Childhood",
-                Colors.amber[500],
-                Colors.amber[100],
-                "13.4Gb March 8, 2021",
-                Icons.videocam
-              ),
+                  Icons.library_music),
+              _mediaListItem("Student Movies for March", Colors.amber[500],
+                  Colors.amber[100], "894Mb March 8, 2021", Icons.videocam),
+              _mediaListItem("Childhood", Colors.amber[500], Colors.amber[100],
+                  "13.4Gb March 8, 2021", Icons.videocam),
               _mediaListItem(
                 "Podcast with Larry Taylor",
                 Colors.amber[500],
@@ -368,12 +277,11 @@ class _MediaPageState extends State<MediaPage> {
                 Icons.library_music,
               ),
               _mediaListItem(
-                "Video Blog Youtube",
-                Colors.amber[500],
-                Colors.amber[100],
-                "13.4Gb February 11, 2021",
-                Icons.videocam
-              ),
+                  "Video Blog Youtube",
+                  Colors.amber[500],
+                  Colors.amber[100],
+                  "13.4Gb February 11, 2021",
+                  Icons.videocam),
               _mediaListItem(
                 "Podcast with Katherine Long",
                 Colors.amber[500],
@@ -388,10 +296,11 @@ class _MediaPageState extends State<MediaPage> {
     );
   }
 
-  Widget _mediaListItem(String title, Color icon, Color accent, String meta, IconData mediaIcon){
+  Widget _mediaListItem(
+      String title, Color icon, Color accent, String meta, IconData mediaIcon) {
     return Padding(
       padding: EdgeInsets.only(
-        bottom:  2 * Responsive.heightMultiplier,
+        bottom: 2 * Responsive.heightMultiplier,
         left: 6 * Responsive.widthMultiplier,
       ),
       child: Row(
@@ -403,7 +312,7 @@ class _MediaPageState extends State<MediaPage> {
                 borderRadius: BorderRadius.circular(6.8),
               ),
               child: Padding(
-                padding: EdgeInsets.all( 3 * Responsive.imageSizeMultiplier),
+                padding: EdgeInsets.all(3 * Responsive.imageSizeMultiplier),
                 child: Icon(
                   mediaIcon,
                   size: 6 * Responsive.imageSizeMultiplier,
@@ -443,5 +352,4 @@ class _MediaPageState extends State<MediaPage> {
       ),
     );
   }
-
 }
